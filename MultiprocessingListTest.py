@@ -2,7 +2,7 @@ from multiprocessing import Process, Manager
 from unittest import TestCase
 
 
-class TestMultiprocessingList(TestCase):
+class MultiprocessingListTest(TestCase):
 
     def test_normal_list_does_not_share_data_correctly(self):
 
