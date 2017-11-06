@@ -3,11 +3,10 @@ from unittest import TestCase
 
 
 class MultiprocessingListTest(TestCase):
-
     def test_normal_list_does_not_share_data_correctly(self):
 
         normal_list = []
-        process = Process(target=self.do_some_work, args=(normal_list, ))
+        process = Process(target=self.do_some_work, args=(normal_list,))
 
         process.start()
         process.join()
@@ -18,7 +17,7 @@ class MultiprocessingListTest(TestCase):
 
         manager = Manager()
         multiprocessing_list = manager.list()
-        process = Process(target=self.do_some_work, args=(multiprocessing_list, ))
+        process = Process(target=self.do_some_work, args=(multiprocessing_list,))
 
         process.start()
         process.join()  # Needed to force wait all workers to finish
@@ -32,7 +31,7 @@ class MultiprocessingListTest(TestCase):
         multiprocessing_list = manager.list()
 
         for i in range(15):
-            workers.append(Process(target=self.do_some_work, args=(multiprocessing_list, )))
+            workers.append(Process(target=self.do_some_work, args=(multiprocessing_list,)))
 
         for worker in workers:
             worker.start()
@@ -43,8 +42,4 @@ class MultiprocessingListTest(TestCase):
     @staticmethod
     def do_some_work(shared_list: list):
         for i in range(100):
-            print(i)
             shared_list.append(i)
-
-
-

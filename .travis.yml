@@ -4,4 +4,4 @@ python:
   - '3.5'
 
 script:
-  - python -m unittest discover -t -p '*Test.py'
+  - python -m unittest discover -t . -p '*Test.py'
